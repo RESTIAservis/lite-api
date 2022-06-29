@@ -1,0 +1,91 @@
+{
+    "orderNumber": 327558,
+    "shortCode": "shcx",
+    "paymentType": "cash",
+    "price": {
+       "packingPrice": 3000,
+       "surchargeToMinimum": 0,
+       "deliveryPrice": 5500,
+       "itemsPrice": 81700,
+       "tipPrice": 0
+    },
+    "createdAt": "2022-02-15T14:33:23+01:00",
+    "deliveryAt": "2022-02-15T18:00:00+01:00",
+    "deliveryOnTime": true,
+    "isPickup": true,
+    "status": "new",
+    "destination": {
+       "street": "Hodkovická 20",
+       "city": "Liberec",
+       "zip": "46312",
+       "latitude": 50.732801437924884,
+       "longitude": 15.056719501229368
+    },
+    "note": "",
+    "customer": {
+      "name": "Test test",
+      "email": "email@example.org",
+      "phone": "123456789"
+    },
+    "restaurant": {
+       "id": "genericRestaurantId"
+     },
+    "items": [
+      {
+        "id": 689269,
+        "name": "Texas chilli burger",
+        "posId": "POS_631",
+        "price": 21000,
+        "count": 2,
+        "note": "",
+        "extras": [
+          {
+            "id": 169821,
+            "name": "70) Mozzarella 75g",
+            "posId": "102+400",
+            "price": 2500,
+            "count": 2
+          },
+          {
+            "id": 169822,
+            "name": "90) Losos 75g",
+            "posId": "100+400",
+            "price": 100,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": 689270,
+        "name": "Texas chilli burger",
+        "posId": "POS_631",
+        "price": 21000,
+        "count": 1,
+        "note": "",
+        "extras": [
+          {
+            "id": 169823,
+            "name": "74) Balkansky syr 50g",
+            "posId": "106",
+            "price": 1500,
+            "count": 1
+          },
+          {
+            "id": 169824,
+            "name": "66) Napoli 50g",
+            "posId": "103+400",
+            "price": 2500,
+            "count": 2
+          },
+          {
+            "id": 169825,
+            "name": "78) Sunka 100g",
+            "posId": "107",
+            "price": 2000,
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "token": "ae1432f8757138f0e5c1"
+}
