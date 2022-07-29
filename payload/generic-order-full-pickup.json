@@ -7,7 +7,8 @@
        "surchargeToMinimum": 0,
        "deliveryPrice": 5500,
        "itemsPrice": 81700,
-       "tipPrice": 0
+       "tipPrice": 0,
+       "discountPrice": 2000
     },
     "createdAt": "2022-02-15T14:33:23+01:00",
     "deliveryAt": "2022-02-15T18:00:00+01:00",
