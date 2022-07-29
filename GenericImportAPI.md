@@ -73,10 +73,11 @@ Fields of a Price object:
 |Field|Type|Required|Description|
 |---            |---                |---|---|
 |deliveryPrice  |integer            | Y | Delivery price |
-|packingPrice   |integer            | Y | Summary of all packing prices for whole order |
-|itemsPrice     |integer            | Y | Summary of order items prices |
+|packingPrice   |integer            | Y | Sum of all packing prices for whole order |
+|itemsPrice     |integer            | Y | Sum of order items prices |
 |tipPrice       |integer            | N | Tips for staff |
 |surchargeToMin |integer            | N | Surcharge to order minimal price |
+|discountPrice  |integer            | N | Sum of all discounts. Positive integer, which will be subtracted from total order price |
 
 ### Order Item
 
