@@ -4,7 +4,7 @@ Generic Order Import API
 RESTIA Lite offers webhook to import new orders from custom service as JSON object.
 
 ```
-POST https://apilite.restia.cz/import/generic
+POST https://apilite.restia.cz/api/import/generic
 ```
 with JSON payload defined bellow. \[[Examples](./payload/)\]
 
