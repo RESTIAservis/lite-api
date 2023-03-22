@@ -128,7 +128,7 @@ Cancel request
 ```
 POST https://apilite.restia.cz/api/import/generic
 ```
-with JSON payload defined bellow.
+with JSON payload defined bellow. \[[Examples](./payload/generic-order-cancel-request.json)\]
 
 ### Order cancel request data
 
@@ -140,6 +140,6 @@ Fields of an order object:
 |Field|Type|Required|Description|
 |---            |---                                        |---|---|
 |orderNumber    |string                                     | Y | Order identifier, e.g. ID  |
-|shortCode      |string                                     | Y | Short code of canceled order  |
+|shortCode      |string                                     | Y | Short code for easier identification in restaurant, should be better human readable than orderNumber  |
 |restaurant     |[Restaurant object](#restaurant)           | Y | Object contains restaurant informations |
 |status         |string                                     | Y | Order status, allowed value is **canceled**|
