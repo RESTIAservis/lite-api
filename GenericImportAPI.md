@@ -128,7 +128,7 @@ Cancel request
 ```
 POST https://apilite.restia.cz/api/import/generic
 ```
-with JSON payload defined bellow. \[[Examples](./payload/generic-order-cancel-request.json)\]
+with JSON payload defined bellow. \[[Example](./payload/generic-order-cancel-request.json)\]
 
 ### Order cancel request data
 
