@@ -24,16 +24,16 @@ Fields of an order object:
 |orderNumber    |string             | Y | Order identifier, e.g. ID  |
 |shortCode      |string             | Y | Short code for easier identification in restaurant, should be better human readable than orderNumber  |
 |token          |string             | N | Order token, optional |
-|destination    |Destination object | N | Object with order destination data, object is required only if order is not for delivery|
-|customer       |Customer object    | Y | Object with customer data |
+|destination    |[Destination](#destination) object | N | Object with order destination data, object is required only if order is not for delivery|
+|customer       |[Customer](#customer) object    | Y | Object with customer data |
 |createdAt      |datetime           | Y | Datetime when order was created. <br>Is encoded as ISO8601 string |
 |deliveryAt     |datetime           | Y | Expected order delivery time to the customer, if order is for pickup, this time is used as expected pickup time. <br>Is encoded as ISO8601 string|
 |deliveryOnTime |boolean            | N | If true, order is not immediate and will be prepared later by 'deliveryAt' option |
 |isPickup       |boolean            | N | If true, order is marked as takeaway order and deliveryAt time will be used as time ready for pickup|
 |paymentType    |string             | Y | Type of payment, allowed values are:<br> **cash** - order will be paid in cash to the courier or in restaurant if order is for pickup. <br> **card** - order will be paid with card to the courier or in restaurant if is for pickup. <br> **online** - order was already paid online. |
-|price          |Price object       | Y | Object contains summary prices |
-|items          |array with Order items | Y | Array contains order items|
-|restaurant     |Restaurant object  | Y | Object contains restaurant informations|
+|price          |[Price](#price) object       | Y | Object contains summary prices |
+|items          |array with [Order items](#order-item) | Y | Array contains order items|
+|restaurant     |[Restaurant](#restaurant) object  | Y | Object contains restaurant informations|
 |status         |string             | Y | Order status, allowed value is **new**|
 |note           |string             | N | Customer note for order, can be empty|
 
@@ -81,9 +81,9 @@ Fields of a Price object:
 
 ### Order Item
 
-- Price is, same as in Price object, integer representing original price multiplied by 100. <br>**EXAMPLE**: 10€ would be 1000 
+- Price is, same as in [Price](#price) object, integer representing original price multiplied by 100. <br>**EXAMPLE**: 10€ would be 1000 
 
-Fields of a Price object:
+Fields of a Order item object:
 
 |Field|Type|Required|Description|
 |---            |---                |---|---|
@@ -92,12 +92,12 @@ Fields of a Price object:
 |price          | integer           | Y | Unit price of item |
 |count          | integer           | Y | Count of item |
 |note           | string            | N | Customer note for item (eg. not spicy, etc.) |
-|extras         | array of Extra Order Items | N | Array of extras, e.g. toppings etc. |
+|extras         | array of [Extra Order Items](#extra-order-item) | N | Array of extras, e.g. toppings etc. |
 
 ### Extra Order Item
 
-- Same object as Order Item, but without extras field
-- Price is, same as in Price object, integer representing original price multiplied by 100. <br>**EXAMPLE**: 10€ would be 1000 
+- Same object as [Order Item](#order-item), but without extras field
+- Price is, same as in [Price](#price) object, integer representing original price multiplied by 100. <br>**EXAMPLE**: 10€ would be 1000 
 
 |Field|Type|Required|Description|
 |---            |---                |---|---|
@@ -116,3 +116,30 @@ Fields of a Restaurant object:
 |---            |---                |---|---|
 |id             | string  | Y | Restaurant ID provided be RESTIA |
 |name           | string  | N | Restaurant custom name, only for better human readable identification |
+
+
+
+Cancel imported order API
+=========================
+
+Cancel request
+----------------------------
+
+```
+POST https://apilite.restia.cz/api/import/generic
+```
+with JSON payload defined bellow.
+
+### Order cancel request data
+
+- The object bellow is expected directly in request body
+- Combination of **orderNumber, shortCode** must be same as it has imported order
+
+Fields of an order object:
+
+|Field|Type|Required|Description|
+|---            |---                                        |---|---|
+|orderNumber    |string                                     | Y | Order identifier, e.g. ID  |
+|shortCode      |string                                     | Y | Short code of canceled order  |
+|restaurant     |[Restaurant object](#restaurant)           | Y | Object contains restaurant informations |
+|status         |string                                     | Y | Order status, allowed value is **canceled**|
