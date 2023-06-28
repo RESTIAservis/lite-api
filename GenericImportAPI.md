@@ -91,6 +91,7 @@ Fields of a Order item object:
 |posId          | string            | Y | ID of product in POS system, cannot be empty |
 |price          | integer           | Y | Unit price of item |
 |count          | integer           | Y | Count of item |
+|name           | string            | Y | Name/label of item |
 |note           | string            | N | Customer note for item (eg. not spicy, etc.) |
 |extras         | array of [Extra Order Items](#extra-order-item) | N | Array of extras, e.g. toppings etc. |
 
@@ -105,6 +106,7 @@ Fields of a Order item object:
 |posId          | string            | Y | ID of product in POS system, cannot be empty |
 |price          | integer           | Y | Unit price of item |
 |count          | integer           | Y | Count of item |
+|name           | string            | Y | Name/label of item |
 |note           | string            | N | Customer note for item (eg. not spicy, etc.) |
 
 
