@@ -67,6 +67,7 @@ Fields of a Customer object:
 
 - All taxes are included
 - Values are integers representing original price multiplied by 100. <br>**EXAMPLE**: 10€ would be 1000 
+- itemsPrice will be computed from items on server after import
 
 Fields of a Price object:
 
@@ -74,7 +75,6 @@ Fields of a Price object:
 |---            |---                |---|---|
 |deliveryPrice  |integer            | Y | Delivery price |
 |packingPrice   |integer            | Y | Sum of all packing prices for whole order |
-|itemsPrice     |integer            | Y | Sum of order items prices |
 |tipPrice       |integer            | N | Tips for staff |
 |surchargeToMin |integer            | N | Surcharge to order minimal price |
 |discountPrice  |integer            | N | Sum of all discounts. Positive integer, which will be subtracted from total order price |
