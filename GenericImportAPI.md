@@ -54,7 +54,7 @@ Fields of an order object:
 |restaurant     |[Restaurant](#restaurant) object  | Y | Object contains restaurant informations|
 |status         |string             | Y | Order status, allowed value is **new**|
 |note           |string             | N | Customer note for order, can be empty|
-|statusUpdateWebhookUrl|string      | N | Url of webhook where API will send POST requests with status updates|
+|statusUpdateWebhookUrl|string      | N | Url of webhook where API will send [POST request](#status-update-request-data) with status updates|
 
 
 ### Destination
@@ -182,7 +182,7 @@ Fields of the request payload:
 |---            |---                                        |---|---|
 |id             |string                                     | Y | ID in Restia API  |
 |orderNumber    |string                                     | Y | Order identifier from [Order object](#order)  , e.g. ID  |
-|restaurantId   |string                                     | Y | Object contains restaurant informations |
+|restaurantId   |string                                     | Y | Object contains restaurant id used in [Restaurant object](#restaurant)  |
 |status         |string                                     | Y | Order status, values \[**ready_pickup**, **dispatched**, **arrived_customer**, **delivered**\]|
 
 
