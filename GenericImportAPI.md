@@ -33,7 +33,7 @@ Import Order fields
 ### Order
 
 - The object bellow is expected directly in request body
-- Combination of **orderNumber, shortCode** must be unique for one restaurant, otherwise HTTP code 409 Conflict will be returned and order will be rejected
+- Combination of **orderNumber, shortCode** must be unique for one restaurant, otherwise order data will be ignored and API return id of already existing order
 
 Fields of an order object:
 
@@ -54,6 +54,7 @@ Fields of an order object:
 |restaurant     |[Restaurant](#restaurant) object  | Y | Object contains restaurant informations|
 |status         |string             | Y | Order status, allowed value is **new**|
 |note           |string             | N | Customer note for order, can be empty|
+|statusUpdateWebhookUrl|string      | N | Url of webhook where API will send POST requests with status updates|
 
 
 ### Destination
@@ -163,3 +164,37 @@ Fields of an order object:
 |shortCode      |string                                     | Y | Short code for easier identification in restaurant, should be better human readable than orderNumber  |
 |restaurant     |[Restaurant object](#restaurant)           | Y | Object contains restaurant informations |
 |status         |string                                     | Y | Order status, allowed value is **canceled**|
+
+
+Webhook order status update 
+===========================
+
+```
+POST https://localhost/exampleStatusUpdateWebhookUrl
+```
+with JSON payload defined bellow. \[[Example](./payload/generic-webhook-status-update.json)\]
+
+### Status update request data
+
+Fields of the request payload:
+
+|Field|Type|Required|Description|
+|---            |---                                        |---|---|
+|id             |string                                     | Y | ID in Restia API  |
+|orderNumber    |string                                     | Y | Order identifier from [Order object](#order)  , e.g. ID  |
+|restaurantId   |string                                     | Y | Object contains restaurant informations |
+|status         |string                                     | Y | Order status, values \[**ready_pickup**, **dispatched**, **arrived_customer**, **delivered**\]|
+
+
+
+Example:
+----------------------------
+
+
+```
+curl -i https://localhost/exampleStatusUpdateWebhookUrl \
+    -X POST \
+    -H 'Authorization: ApiKeyProvidedByClient' \
+    -H 'Content-Type: application/json' \
+    -d '{"id":"46e9e171-66a7-40f2-a819-57bce6d14abb","orderNumber":"20150101","status":"delivered","restaurantId":"genericRestaurantId"}'
+```
