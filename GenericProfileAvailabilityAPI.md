@@ -11,7 +11,7 @@ RESTIA Lite offers temporary closing/opening your custom API profile
 
 Headers
 ---------------------
-- All requests to client's API always contains Authorization header with API key provided by client
+- All requests to client's API always contains Authorization header with API key provided by RESTIA
 ```
 Authorization: ApiKeyProvidedByRestia
 ```
