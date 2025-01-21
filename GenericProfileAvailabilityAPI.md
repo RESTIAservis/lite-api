@@ -13,7 +13,7 @@ Headers
 ---------------------
 - All requests to client's API always contains Authorization header with API key provided by client
 ```
-Authorization: ApiKeyProvidedByClient
+Authorization: ApiKeyProvidedByRestia
 ```
 
 Close profile request
@@ -42,7 +42,7 @@ Field|Type|Required|Description|Example value|
 ```
 curl -i https://your-api.example.com/profile-availability-webhook \
     -X PATCH \
-    -H 'Authorization: ApiKeyProvidedByClient' \
+    -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
     -d '{"id":"69314b087fdd7f45d9c8c3faaa5084ce","status":"CLOSED","until":"2020-11-30T10:10:00.000Z"}'
 ```
@@ -55,7 +55,7 @@ Open profile request
 ### Body
 Field|Type|Required|Description|Example value|
 |---            |---                |---|---|---|
-|id             |string             | Y | Profile ID, provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
+|id             |string             | Y | Restaurant ID, provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
 |status         |string             | Y | New status of profile | OPEN |
 
 ### Body json example
@@ -70,7 +70,7 @@ Field|Type|Required|Description|Example value|
 ```
 curl -i https://your-api.example.com/profile-availability-webhook \
     -X PATCH \
-    -H 'Authorization: ApiKeyProvidedByClient' \
+    -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
     -d '{"id":"69314b087fdd7f45d9c8c3faaa5084ce","status":"OPEN"}'
 ```
