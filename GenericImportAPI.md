@@ -13,7 +13,7 @@ Headers
 ---------------------
 - All requests should contains Authorization header with API key provided by RESTIA
 ```
-Authorization: ApiKeyProvidedByClient
+Authorization: ApiKeyProvidedByRestia
 ```
 
 
@@ -21,7 +21,7 @@ Authorization: ApiKeyProvidedByClient
 ```
 curl -i https://apilite.restia.cz/api/import/generic \
     -X POST \
-    -H 'Authorization: ApiKeyProvidedByClient' \
+    -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
     -d '{"orderNumber":"customOrderNumber","shortCode":"asdf","token":"xxxxxxxxxxxxxxxxxxx","destination":{"street":"Ulice 11","city":"Praha","zip":"11000","longitude":15,"latitude":50},"customer":{"name":"John Doe","phone":"123456789","email":"example@example.com"},"createdAt":"2021-09-01T10:36:24.544+02:00","deliveryAt":"2021-09-01T10:46:24.544+02:00","paymentType":"online","price":{"deliveryPrice":2000,"packingPrice":1000,"itemsPrice":20000},"items":[{"id":"itemId","name":"Wings in the marinade - mix it","posId":"912_500g","count":1,"price":"19000","note":"Not spicy please","extras":[{"name":"Extra sauce","posId":"111_extras","count":1,"price":"1000"}]}],"restaurant":{"id":"genericRestaurantId","name":"DGC - Default Generic Restaurant"},"status":"new","note":"Please hurry, I'm hungry"}'
 ```
@@ -194,7 +194,7 @@ Example:
 ```
 curl -i https://localhost/exampleStatusUpdateWebhookUrl \
     -X POST \
-    -H 'Authorization: ApiKeyProvidedByClient' \
+    -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
     -d '{"id":"46e9e171-66a7-40f2-a819-57bce6d14abb","orderNumber":"20150101","status":"delivered","restaurantId":"genericRestaurantId"}'
 ```
