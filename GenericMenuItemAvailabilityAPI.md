@@ -1,4 +1,4 @@
-Menu Item availability API
+Menu item availability API
 =========================
 
 RESTIA Lite offers display/hide menu  item in your custom API
@@ -8,6 +8,13 @@ RESTIA Lite offers display/hide menu  item in your custom API
 - We only accept "https" webhook urls
 - RESTIA will provide API Key. This API Key will be used for authentication of request
 
+
+Restaurant ID
+---------------------
+It is global identifier used across all public APIs. RESTIA will provide this identifier 
+- Is used in [__Generic order import API__](GenericImportAPI.md#restaurant)
+- Is used in [__Menu item availability API__](GenericMenuItemAvailabilityAPI.md#body)
+- Is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md.md#body)
 
 Headers
 ---------------------
@@ -23,13 +30,19 @@ Show/Hide menu item request
 - On success expect response HTTP 200
 - Availability is determined by _isAvailable_ property, which can be __TRUE__ or __FALSE__
 
-
 ### Body
 Field|Type|Required|Description|Example value|
+|---            |---                        |---|---|---|
+|id             |string                     | Y | [Restaurant ID](#restaurant-id), provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
+|items          |array of [Items](#item)    | Y | Array of items |  |
+
+
+### Item
+Field|Type|Required|Description|Example value|
 |---            |---                |---|---|---|
-|itemId         |string             | Y | Item ID, provided by RESTIA | menu-item-1234  |
+|itemId         |string             | Y | Item ID, provided by RESTIA   | menu-item-1234  |
 |posId          |string             | N | POS ID of item - may be null  | POS-CODE-11 |
-|isAvailable    |boolean            | Y | IS item available | TRUE |
+|isAvailable    |boolean            | Y | IF is item available          | TRUE |
 
 
 Examples
@@ -37,13 +50,16 @@ Examples
 
 ### SHOW
 ```
-[
-    {
-        "itemId": "menu-item-1234",
-        "posId": "POS-CODE-11"
-        "isAvailable: true
-    }
-]
+{ 
+    "id": "69314b087fdd7f45d9c8c3faaa5084ce",
+    "items": [
+        {
+            "itemId": "menu-item-1234",
+            "posId": "POS-CODE-11"
+            "isAvailable: true
+        }
+    ]
+}
 ```
 
 #### Request Example
@@ -52,18 +68,21 @@ curl -i https://your-api.example.com/menu-item-availability-webhook \
     -X PATCH \
     -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
-    -d '[{"itemId":"menu-item-1234","posId":"POS-CODE-11","isAvailable":true}]'
+    -d '{"id":"69314b087fdd7f45d9c8c3faaa5084ce","items":[{"itemId":"menu-item-1234","posId":"POS-CODE-11","isAvailable":true}]}'
 ```
 
 ### HIDE
 ```
-[
-    {
-        "itemId": "menu-item-1234",
-        "posId": "POS-CODE-11"
-        "isAvailable: false
-    }
-]
+{ 
+    "id": "69314b087fdd7f45d9c8c3faaa5084ce",
+    "items": [
+        {
+            "itemId": "menu-item-1234",
+            "posId": "POS-CODE-11"
+            "isAvailable: false
+        }
+    ]
+}
 ```
 
 #### Request Example
@@ -72,6 +91,6 @@ curl -i https://your-api.example.com/menu-item-availability-webhook \
     -X PATCH \
     -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
-    -d '[{"itemId":"menu-item-1234","posId":"POS-CODE-11","isAvailable":false}]'
+    -d '{"id":"69314b087fdd7f45d9c8c3faaa5084ce","items":[{"itemId":"menu-item-1234","posId":"POS-CODE-11","isAvailable":false}]}'
 ```
 
