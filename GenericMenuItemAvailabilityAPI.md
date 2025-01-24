@@ -11,10 +11,11 @@ RESTIA Lite offers display/hide menu  item in your custom API
 
 Restaurant ID
 ---------------------
-It is global identifier used across all public APIs. RESTIA will provide this identifier 
-- Is used in [__Generic order import API__](GenericImportAPI.md#restaurant)
-- Is used in [__Menu item availability API__](GenericMenuItemAvailabilityAPI.md#body)
-- Is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md.md#body)
+It is global identifier used across all public APIs. 
+Identifier will be provided be provided by RESTIA.
+- is used in [__Generic order import API__](GenericImportAPI.md#restaurant)
+- is used in [__Menu item availability API__](GenericMenuItemAvailabilityAPI.md#body)
+- is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md.md#body)
 
 Headers
 ---------------------
