@@ -6,8 +6,16 @@ RESTIA Lite offers temporary closing/opening your custom API profile
 - Client must provide webhook url to recieve profile status updates
 - HTTP Method of webhook must be PATCH
 - We only accept "https" webhook urls
-- Client must provide also API Key which should be at least 16 characters long. API Key will be used for authentication of request
+- RESTIA will provide also API Key. API Key will be used for authentication of request
 
+
+Restaurant ID
+---------------------
+It is global identifier used across all public APIs. 
+Identifier will be provided by RESTIA.
+- is used in [__Generic order import API__](GenericImportAPI.md#restaurant)
+- is used in [__Menu item availability API__](GenericMenuItemAvailabilityAPI.md#body)
+- is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md.md#body)
 
 Headers
 ---------------------
@@ -25,7 +33,7 @@ Close profile request
 ### Body
 Field|Type|Required|Description|Example value|
 |---            |---                |---|---|---|
-|id             |string             | Y | Profile ID, provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
+|id             |string             | Y | [Restaurant ID](#restaurant-id), provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
 |status         |string             | Y | New status of profile | CLOSED |
 |until          |string             | Y | The time until which the profile is closed. <br>Is encoded as ISO8601 string | 2020-11-30T10:10:00.000Z |
 
@@ -55,7 +63,7 @@ Open profile request
 ### Body
 Field|Type|Required|Description|Example value|
 |---            |---                |---|---|---|
-|id             |string             | Y | Restaurant ID, provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
+|id             |string             | Y | [Restaurant ID](#restaurant-id), provided by RESTIA | 69314b087fdd7f45d9c8c3faaa5084ce  |
 |status         |string             | Y | New status of profile | OPEN |
 
 ### Body json example
