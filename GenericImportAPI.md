@@ -9,6 +9,14 @@ POST https://apilite.restia.cz/api/import/generic
 with JSON payload defined bellow. \[[Examples](./payload/)\]
 
 
+Restaurant ID
+---------------------
+It is global identifier used across all public APIs. 
+Identifier will be provided be provided by RESTIA.
+- is used in [__Generic order import API__](GenericImportAPI.md#restaurant)
+- is used in [__Menu item availability API__](GenericMenuItemAvailabilityAPI.md#body)
+- is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md.md#body)
+
 Headers
 ---------------------
 - All requests should contains Authorization header with API key provided by RESTIA
@@ -135,7 +143,7 @@ Fields of a Restaurant object:
 
 |Field|Type|Required|Description|
 |---            |---                |---|---|
-|id             | string  | Y | Restaurant ID provided be RESTIA |
+|id             | string  | Y | [Restaurant ID](#restaurant-id) provided be RESTIA |
 |name           | string  | N | Restaurant custom name, only for better human readable identification |
 
 
