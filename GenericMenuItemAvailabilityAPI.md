@@ -15,7 +15,7 @@ It is global identifier used across all public APIs.
 Identifier will be provided by RESTIA.
 - is used in [__Generic order import API__](GenericImportAPI.md#restaurant)
 - is used in [__Menu item availability API__](GenericMenuItemAvailabilityAPI.md#body)
-- is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md.md#body)
+- is used in [__Profile availability API__](GenericProfileAvailabilityAPI.md#body)
 
 Headers
 ---------------------
