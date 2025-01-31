@@ -28,6 +28,7 @@ Close profile request
 ---------------------
 - Request contains body encoded as JSON string
 - On success expect response HTTP 200
+- RESTIA will send you [Open request](#open-profile-request) at the time `until`.
 
 
 ### Body
