@@ -194,7 +194,6 @@ Fields of the request payload:
 |status         |string                                     | Y | Order status, values \[**ready_pickup**, **dispatched**, **arrived_customer**, **delivered**\]|
 
 
-
 Example:
 ----------------------------
 
@@ -205,4 +204,31 @@ curl -i https://localhost/exampleStatusUpdateWebhookUrl \
     -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
     -d '{"id":"46e9e171-66a7-40f2-a819-57bce6d14abb","orderNumber":"20150101","status":"delivered","restaurantId":"genericRestaurantId"}'
+```
+
+###  Special case *canceled* status:
+
+Fields of the request payload:
+
+|Field|Type|Required|Description|
+|---            |---                                        |---|---|
+|id             |string                                     | Y | ID in Restia API  |
+|orderNumber    |string                                     | Y | Order identifier from [Order object](#order)  , e.g. ID  |
+|reason         |string                                     | Y | String with reason  |
+|restaurantId   |string                                     | Y | Object contains restaurant id used in [Restaurant object](#restaurant)  |
+|status         |string                                     | Y | Order status, values \[**canceled**\]|
+
+
+
+
+Example:
+----------------------------
+
+
+```
+curl -i https://localhost/exampleStatusUpdateWebhookUrl \
+    -X POST \
+    -H 'Authorization: ApiKeyProvidedByRestia' \
+    -H 'Content-Type: application/json' \
+    -d '{"id":"46e9e171-66a7-40f2-a819-57bce6d14abb","orderNumber":"20150101","status":"delivered","restaurantId":"genericRestaurantId","reason":"UNKNOWN"}'
 ```
