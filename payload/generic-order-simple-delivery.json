@@ -19,8 +19,7 @@
     "paymentType": "online",
     "price": {
        "deliveryPrice": 2000,
-       "packingPrice": 1000,
-       "itemsPrice": 20000
+       "packingPrice": 1000
     },
     "items":[
        {
