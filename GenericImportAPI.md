@@ -31,7 +31,7 @@ curl -i https://apilite.restia.cz/api/import/generic \
     -X POST \
     -H 'Authorization: ApiKeyProvidedByRestia' \
     -H 'Content-Type: application/json' \
-    -d '{"orderNumber":"customOrderNumber","shortCode":"asdf","token":"xxxxxxxxxxxxxxxxxxx","destination":{"street":"Ulice 11","city":"Praha","zip":"11000","longitude":15,"latitude":50},"customer":{"name":"John Doe","phone":"123456789","email":"example@example.com"},"createdAt":"2021-09-01T10:36:24.544+02:00","deliveryAt":"2021-09-01T10:46:24.544+02:00","paymentType":"online","price":{"deliveryPrice":2000,"packingPrice":1000,"itemsPrice":20000},"items":[{"id":"itemId","name":"Wings in the marinade - mix it","posId":"912_500g","count":1,"price":"19000","note":"Not spicy please","extras":[{"name":"Extra sauce","posId":"111_extras","count":1,"price":"1000"}]}],"restaurant":{"id":"genericRestaurantId","name":"DGC - Default Generic Restaurant"},"status":"new","note":"Please hurry, I'm hungry"}'
+    -d '{"orderNumber":"customOrderNumber","shortCode":"asdf","token":"xxxxxxxxxxxxxxxxxxx","destination":{"street":"Ulice 11","city":"Praha","zip":"11000","longitude":15,"latitude":50},"customer":{"name":"John Doe","phone":"123456789","email":"example@example.com"},"createdAt":"2021-09-01T10:36:24.544+02:00","deliveryAt":"2021-09-01T10:46:24.544+02:00","paymentType":"online","price":{"deliveryPrice":2000,"packingPrice":1000},"items":[{"id":"itemId","name":"Wings in the marinade - mix it","posId":"912_500g","count":1,"price":19000,"note":"Not spicy please","extras":[{"name":"Extra sauce","posId":"111_extras","count":1,"price":1000}]}],"restaurant":{"id":"genericRestaurantId","name":"DGC - Default Generic Restaurant"},"status":"new","note":"Please hurry, I'm hungry"}'
 ```
 
 
@@ -56,6 +56,7 @@ Fields of an order object:
 |deliveryAt     |datetime           | Y | Expected order delivery time to the customer, if order is for pickup, this time is used as expected pickup time. <br>Is encoded as ISO8601 string|
 |deliveryOnTime |boolean            | N | If true, order is not immediate and will be prepared later by 'deliveryAt' option |
 |isPickup       |boolean            | N | If true, order is marked as takeaway order and deliveryAt time will be used as time ready for pickup|
+|isInRestaurant |boolean            | N | If true, and __isPickup is true__ also, order is marked as in-restaurant order and deliveryAt time will be used as time ready for pickup. For delivery orders is ignored|
 |paymentType    |string             | Y | Type of payment:<br> &bull; **cash** - order will be paid in cash to the courier or in restaurant if order is for pickup. <br> &bull; **card** - order will be paid with card to the courier or in restaurant if is for pickup. <br> &bull; **online** - order was already paid online.<br>**Custom type** is supported also, but in Lite API will be resolved as already paid (**online**), to the POS will be transfered with given custom value |
 |price          |[Price](#price) object       | Y | Object contains summary prices |
 |items          |array with [Order items](#order-item) | Y | Array contains order items|
