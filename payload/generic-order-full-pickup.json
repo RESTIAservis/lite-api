@@ -4,7 +4,7 @@
     "paymentType": "cash",
     "price": {
        "packingPrice": 3000,
-       "surchargeToMinimum": 0,
+       "surchargeToMin": 0,
        "deliveryPrice": 5500,
        "tipPrice": 0,
        "discountPrice": 2000
