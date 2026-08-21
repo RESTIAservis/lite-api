@@ -64,6 +64,9 @@ Fields of an order object:
 |status         |string             | Y | Order status, allowed value is **new**|
 |note           |string             | N | Customer note for order, can be empty|
 |statusUpdateWebhookUrl|string      | N | Url of webhook where API will send [POST request](#status-update-request-data) with status updates|
+|markAsDelivered|boolean            | N | If true, the order is imported as usual (transferred to the POS and accepted according to the restaurant settings) and is then immediately closed as **delivered**. Use it for orders that are already finished and paid on site (kiosk, cashier, table order). The close is silent - the customer gets no notification and no callback is sent to `statusUpdateWebhookUrl`. \[[Example](./payload/generic-order-mark-delivered.json)\]|
+
+**NOTE**: `markAsDelivered` is the one-request alternative to importing the order and then sending a second request with `status: "delivered"`. Use one or the other, not both.
 
 
 ### Destination
@@ -105,6 +108,7 @@ Fields of a Price object:
 |packingPrice   |integer            | Y | Sum of all packing prices for whole order |
 |tipPrice       |integer            | N | Tips for staff |
 |surchargeToMin |integer            | N | Surcharge to order minimal price |
+|surchargeToMinimum |integer        | N | **LEGACY, deprecated - DO NOT USE THAT! Use `surchargeToMin` instead!** An older revision of this document listed the surcharge field under this name by mistake. Integrations built against it still send it, so the API keeps reading it as a fallback when `surchargeToMin` is missing. **This field MAY BE REMOVED in the future** - please migrate to `surchargeToMin` ASAP. |
 |discountPrice  |integer            | N | Sum of all discounts. Positive integer, which will be subtracted from total order price |
 
 ### Order Item
