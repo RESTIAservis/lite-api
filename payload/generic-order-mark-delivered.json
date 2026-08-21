@@ -1,0 +1,32 @@
+{
+    "orderNumber":"kioskOrder-1042",
+    "shortCode":"1042",
+    "customer":{
+       "name": "John Doe",
+       "phone": "123456789"
+    },
+    "createdAt":"2021-09-01T10:36:24.544+02:00",
+    "deliveryAt":"2021-09-01T10:36:24.544+02:00",
+    "isPickup": true,
+    "isInRestaurant": true,
+    "paymentType": "online",
+    "price": {
+       "deliveryPrice": 0,
+       "packingPrice": 0
+    },
+    "items":[
+       {
+          "id":"itemId",
+          "name":"Wings in the marinade - mix it",
+          "posId":"912_500g",
+          "count":1,
+          "price": "19000"
+       }
+    ],
+    "restaurant": {
+       "id": "genericRestaurantId",
+       "name": "DGC - Default Generic Restaurant"
+    },
+    "status": "new",
+    "markAsDelivered": true
+}
